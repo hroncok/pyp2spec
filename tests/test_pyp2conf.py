@@ -64,13 +64,3 @@ def test_config_with_customization_is_valid(betamax_session):
     assert config == loaded_contents
 
 
-def test_package_without_license_is_not_processed(betamax_session, changelog):
-    with pytest.raises(click.exceptions.UsageError):
-        pyp2conf.create_config_contents(
-            package="tomli",
-            version="1.1.0",
-            date=changelog[0],
-            name=changelog[1],
-            email=changelog[2],
-            session=betamax_session,
-        )
